@@ -1,0 +1,18 @@
+.link  {
+    text-decoration: none;
+    color: var(--base-color-link);
+    font-weight: 600;
+    line-height: 24px;
+    transition: all 0.2s;
+}
+
+link:hover{
+    text-decoration: underline;
+    color: var(--active-color-link);
+}
+
+.link__active {
+    text-decoration: underline;
+    color: var(--active-color-link);
+    font-weight: bold;
+}

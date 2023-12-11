@@ -1,0 +1,21 @@
+.header {
+    background-color: var(--nav-bacground);
+    padding: 36px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+        color: var(--black-color);
+        font-size: 25px;
+        font-style: normal;
+        font-weight: 900;
+        line-height: 40px;
+    }
+
+    .nav {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+}

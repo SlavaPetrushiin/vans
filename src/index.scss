@@ -1,0 +1,19 @@
+@import './styles/normalize.scss';
+
+
+:root{
+  --black-color: #000000;
+  --nav-bacground: #FFF7ED;
+  --base-color-link: #4D4D4D;
+  --active-color-link: #161616;
+}
+
+body {
+  background-color: var(--nav-bacground);
+}
+
+.site-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
