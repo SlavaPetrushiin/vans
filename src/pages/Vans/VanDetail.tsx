@@ -11,7 +11,6 @@ const VanDetail = () => {
         async function fetchVanById() {
             try {
                 const result = await fetch("/api/vans/" + id).then(response => response.json());
-                console.log(result.vans)
                 setVan(result.vans)
             } catch (error) {
                 console.log(error)
