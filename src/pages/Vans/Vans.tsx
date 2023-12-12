@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useMemo, useState } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import "./Vans.scss";
+import FilterVans, { TypeVan, typeVansValues } from './FilterVans';
 
 export interface IVan {
     id: number;
@@ -13,11 +14,13 @@ export interface IVan {
 
 const Vans = () => {
     const [vans, setVans] = useState<IVan[]>([])
+    let [searchParams] = useSearchParams();
+    const typeFilter = searchParams.get("type");
 
     useEffect(() => {
         async function fetchVans() {
             try {
-                const result = await fetch("/api/vans").then(response => response.json());      
+                const result = await fetch("/api/vans").then(response => response.json());
                 setVans(result.vans);
             } catch (error) {
                 console.log(error)
@@ -27,7 +30,11 @@ const Vans = () => {
         fetchVans();
     }, [])
 
-    const vanElements = vans.map(van => (
+    const vansFiltered = typeFilter && typeVansValues.includes(typeFilter as TypeVan)
+        ? vans.filter(v => v.type === typeFilter)
+        : vans
+
+    const vanElements = vansFiltered.map(van => (
         <div key={van.id} className="van-tile">
             <Link to={`/vans/${van.id}`}>
                 <img src={van.imageUrl} />
@@ -43,6 +50,7 @@ const Vans = () => {
 
     return (
         <div className="van-list-container">
+            <FilterVans />
             <div className="van-list">
                 {vanElements}
             </div>
