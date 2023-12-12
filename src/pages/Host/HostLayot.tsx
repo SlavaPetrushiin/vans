@@ -7,7 +7,7 @@ const HostLayot = () => {
     return (
         <div className="container-host">
             <div className='host-nav'>
-                <CustomLink to="/host" end>Dashboard</CustomLink>
+                <CustomLink to="." end>Dashboard</CustomLink>
                 <CustomLink to="income">Income</CustomLink>
                 <CustomLink to="vans">Vans</CustomLink>
                 <CustomLink to="reviews">Reviews</CustomLink>
