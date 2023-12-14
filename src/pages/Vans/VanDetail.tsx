@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { IVan } from './Vans';
+import CustomLink from '../../components/CustomLink/CustomLink';
 
 const VanDetail = () => {
-    let { id } = useParams();
+    const { id } = useParams();
+    // const { state } = useLocation();
+    const location = useLocation();
     const [van, setVan] = useState<IVan | null>();
 
+    // function getPathWithSearhParams(state: any): string {
+    //     if (!state || !state.search) return "";
+
+    //     let sp = new URLSearchParams(state.search);
+    //     return `?${sp.toString()}`;
+    // }
 
     useEffect(() => {
         async function fetchVanById() {
@@ -20,10 +29,19 @@ const VanDetail = () => {
         fetchVanById();
     }, [id])
 
-    console.log({ id })
+    const search = location.state?.search || "";
+    const textBtnBack = location.state?.type || "all vans"
 
     return (
         <div className="van-detail-container">
+            <div className={'go-to-back'}>
+                {/* <CustomLink to={".." + getPathWithSearhParams(state)} relative='path'  >
+                    Back to all vans
+                </CustomLink> */}
+                <CustomLink to={".." + search} relative='path'  >
+                    Back to {textBtnBack} vans
+                </CustomLink>
+            </div>
             {van ? (
                 <div className="van-detail">
                     <img src={van.imageUrl} />

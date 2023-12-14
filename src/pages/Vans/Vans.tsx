@@ -13,8 +13,8 @@ export interface IVan {
 }
 
 const Vans = () => {
+    const [searchParams] = useSearchParams();
     const [vans, setVans] = useState<IVan[]>([])
-    let [searchParams] = useSearchParams();
     const typeFilter = searchParams.get("type");
 
     useEffect(() => {
@@ -36,7 +36,13 @@ const Vans = () => {
 
     const vanElements = vansFiltered.map(van => (
         <div key={van.id} className="van-tile">
-            <Link to={`${van.id}`}>
+            <Link
+                to={`${van.id}`}
+                state={{
+                    search: `?${searchParams.toString()}`,
+                    type: typeFilter
+                }}
+            >
                 <img src={van.imageUrl} />
                 <div className="van-info">
                     <h3>{van.name}</h3>
