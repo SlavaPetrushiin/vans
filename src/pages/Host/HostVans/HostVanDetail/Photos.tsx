@@ -1,6 +1,6 @@
 import React from 'react'
 import { useOutletContext } from 'react-router-dom';
-import { ContextVan } from './HostVanDetail';
+import { ContextVan } from './HostVanDetailLayout';
 
 const Photos = () => {
     const van = useOutletContext<ContextVan>();

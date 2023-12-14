@@ -13,7 +13,7 @@ import "./App.scss";
 import Details from "./pages/Host/HostVans/HostVanDetail/Details";
 import Photos from "./pages/Host/HostVans/HostVanDetail/Photos";
 import Pricing from "./pages/Host/HostVans/HostVanDetail/Pricing";
-import HostVanDetail from "./pages/Host/HostVans/HostVanDetail/HostVanDetail";
+import HostVanDetailLayout from "./pages/Host/HostVans/HostVanDetail/HostVanDetailLayout";
 
 function App() {
   return (
@@ -28,7 +28,7 @@ function App() {
           <Route path="reviews" element={<Reviews />} />
           
           <Route path="vans" element={<HostVans />} />
-          <Route path="vans/:vanId" element={<HostVanDetail />}>
+          <Route path="vans/:vanId" element={<HostVanDetailLayout />}>
             <Route index element={<Details/>} />
             <Route path="pricing" element={<Pricing/>}/>
             <Route path="photos" element={<Photos/>}/>

@@ -4,9 +4,9 @@ import { useFetchVan } from '../../../../hooks/useFetchVan';
 import CustomLink from '../../../../components/CustomLink/CustomLink';
 import { IVan } from '../../../Vans/Vans';
 
-export type ContextVan = IVan
+export type ContextVan = IVan;
 
-const HostVanDetail = () => {
+const HostVanDetailLayout = () => {
     let { vanId } = useParams();
     const currentVan = useFetchVan("/api/host/vans/" + vanId);
 
@@ -49,6 +49,6 @@ const HostVanDetail = () => {
     )
 }
 
-export default HostVanDetail
+export default HostVanDetailLayout
 
 
