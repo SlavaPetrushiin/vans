@@ -23,14 +23,14 @@ new Server({
       return schema.vans.find(id)
     })
 
-    this.get("/host/vans", (schema: any, request) => {
-      return schema.vans.all()
-    })
+    // this.get("/host/vans", (schema: any, request) => {
+    //   return schema.vans.all()
+    // })
 
-    this.get("/host/vans/:vanId", (schema: any, request) => {
-      const id = request.params.vanId
-      return schema.vans.find(id)
-    })
+    // this.get("/host/vans/:vanId", (schema: any, request) => {
+    //   const id = request.params.vanId
+    //   return schema.vans.find(id)
+    // })
   },
 
   seeds(server) {

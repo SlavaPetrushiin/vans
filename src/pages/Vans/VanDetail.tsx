@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useParams } from 'react-router-dom';
-import { IVan } from './Vans';
 import CustomLink from '../../components/CustomLink/CustomLink';
+import { Van_Result, getVan } from '../../api/api';
 
 const VanDetail = () => {
     const { id } = useParams();
     // const { state } = useLocation();
     const location = useLocation();
-    const [van, setVan] = useState<IVan | null>();
+    const [van, setVan] = useState<Van_Result | null>();
 
     // function getPathWithSearhParams(state: any): string {
     //     if (!state || !state.search) return "";
@@ -19,8 +19,8 @@ const VanDetail = () => {
     useEffect(() => {
         async function fetchVanById() {
             try {
-                const result = await fetch("/api/vans/" + id).then(response => response.json());
-                setVan(result.vans)
+                const van = await getVan(id!);
+                setVan(van)
             } catch (error) {
                 console.log(error)
             }

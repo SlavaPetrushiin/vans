@@ -31,22 +31,13 @@ const FilterVans = () => {
 
 
     return (
-        // <select
-        //     placeholder='Add filter'
-        //     value={vanType || filterOptions[0].value}
-        //     onChange={e => handleChangeType(e.target.value as TypeVan)} 
-        // >
-        //     {filterOptions.map((option) => {
-        //         return <option key={option.label} value={option.value}>{option.label}</option>
-        //     })}
-        // </select>
         <div className='filters-wrap'>
-            <div>
+            {/* <div>
                 <NavLink to={genNewSearchParamString("type", "simple")} className={() => vanType === "simple" ? "active" : ""}>Simple</NavLink>
                 <NavLink to={genNewSearchParamString("type", "luxury")} className={() => vanType === "luxury" ? "active" : ""}>Luxury</NavLink>
                 <NavLink to={genNewSearchParamString("type", "rugged")} className={() => vanType === "rugged" ? "active" : ""}>Rugged</NavLink>
                 {vanType && <Link to={genNewSearchParamString("type", null)}>Clear</Link>}
-            </div>
+            </div> */}
             <div>
                 <button
                     onClick={() => handleFilterChange("type", 'simple')}

@@ -1,27 +1,20 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import "./Vans.scss";
+import { Van_Result, getVans } from '../../api/api';
 import FilterVans, { TypeVan, typeVansValues } from './FilterVans';
+import "./Vans.scss";
 
-export interface IVan {
-    id: number;
-    name: string;
-    price: number;
-    description: string;
-    imageUrl: string;
-    type: string;
-}
 
 const Vans = () => {
     const [searchParams] = useSearchParams();
-    const [vans, setVans] = useState<IVan[]>([])
+    const [vans, setVans] = useState<Van_Result[]>([])
     const typeFilter = searchParams.get("type");
 
     useEffect(() => {
         async function fetchVans() {
             try {
-                const result = await fetch("/api/vans").then(response => response.json());
-                setVans(result.vans);
+                const vans = await getVans();
+                setVans(vans);
             } catch (error) {
                 console.log(error)
             }

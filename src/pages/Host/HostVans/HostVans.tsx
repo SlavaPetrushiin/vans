@@ -1,11 +1,16 @@
-import React, { useState } from 'react'
-import { IVan } from '../../Vans/Vans'
-import { useFetchVans } from '../../../hooks/useFetchVans'
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Van_Result, getVans } from '../../../api/api';
 import "./HostVans.scss";
 
 const HostVans = () => {
-    const vans = useFetchVans("/api/host/vans");
+    const [vans, setVans] = useState<Van_Result[]>([]);
+
+    useEffect(() => {
+        getVans()
+            .then(res => setVans(res))
+            .catch(err => console.error(err))
+    }, [])
 
     const hostVansEls = vans.map(van => (
         <Link
