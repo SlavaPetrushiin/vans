@@ -34,29 +34,3 @@ export async function getVan(id: string): Promise<Van_Result> {
     const data = await response.json();
     return data.vans;
 }
-
-// export async function getVans(): Promise<Van_Result[]> {
-//     const response = await fetch("/api/host/vans");
-//     if (!response.ok) {
-//         throw {
-//             message: "Failed to fetch vans",
-//             statusText: response.statusText,
-//             status: response.status
-//         }
-//     }
-//     const data = await response.json();
-//     return data.vans;
-// }
-
-// export async function getHostVan(id: string): Promise<Van_Result> {
-//     const response = await fetch("/api/host/vans/" + id)
-//     if (!response.ok) {
-//         throw {
-//             message: "Failed to fetch van",
-//             statusText: response.statusText,
-//             status: response.status
-//         }
-//     }
-//     const data = await response.json();
-//     return data.vans;
-// }

@@ -1,13 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import { useLocation, useParams } from 'react-router-dom';
-import CustomLink from '../../components/CustomLink/CustomLink';
+import { Params, useLoaderData, useLocation } from 'react-router-dom';
 import { Van_Result, getVan } from '../../api/api';
+import CustomLink from '../../components/CustomLink/CustomLink';
+
+export async function loader({ params }: {params: Params<"id">}){
+    return getVan(params.id!)
+} 
 
 const VanDetail = () => {
-    const { id } = useParams();
+    // const { id } = useParams();
     // const { state } = useLocation();
     const location = useLocation();
-    const [van, setVan] = useState<Van_Result | null>();
+    // const [van, setVan] = useState<Van_Result | null>();
+    const van = useLoaderData() as Van_Result
 
     // function getPathWithSearhParams(state: any): string {
     //     if (!state || !state.search) return "";
@@ -16,18 +20,18 @@ const VanDetail = () => {
     //     return `?${sp.toString()}`;
     // }
 
-    useEffect(() => {
-        async function fetchVanById() {
-            try {
-                const van = await getVan(id!);
-                setVan(van)
-            } catch (error) {
-                console.log(error)
-            }
-        }
+    // useEffect(() => {
+    //     async function fetchVanById() {
+    //         try {
+    //             const van = await getVan(id!);
+    //             setVan(van)
+    //         } catch (error) {
+    //             console.log(error)
+    //         }
+    //     }
 
-        fetchVanById();
-    }, [id])
+    //     fetchVanById();
+    // }, [id])
 
     const search = location.state?.search || "";
     const textBtnBack = location.state?.type || "all vans"
