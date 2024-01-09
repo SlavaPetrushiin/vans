@@ -11,12 +11,9 @@ export interface Van_Result {
 
 export async function getVans(): Promise<Van_Result[]> {
     const response = await fetch("/api/vans")
+    
     if (!response.ok) {
-        throw {
-            message: "Failed to fetch vans",
-            statusText: response.statusText,
-            status: response.status
-        }
+        throw new Error("Failed to fetch vans")
     }
     const data = await response.json();
     return data.vans;
@@ -25,11 +22,7 @@ export async function getVans(): Promise<Van_Result[]> {
 export async function getVan(id: string): Promise<Van_Result> {
     const response = await fetch("/api/vans/" + id)
     if (!response.ok) {
-        throw {
-            message: "Failed to fetch van",
-            statusText: response.statusText,
-            status: response.status
-        }
+        throw new Error("Failed to fetch van")
     }
     const data = await response.json();
     return data.vans;

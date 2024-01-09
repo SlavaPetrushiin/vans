@@ -18,6 +18,7 @@ import Reviews from "./pages/Host/Reviews/Reviews";
 import Layout from "./pages/Layout";
 import VanDetail, { loader as vanDetailLoader } from "./pages/Vans/VanDetail";
 import Vans, { loader as vansLoader } from "./pages/Vans/Vans";
+import ErrorComponet from "./components/ErrorComponet";
 
 export const router = createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<Layout />}>
@@ -41,7 +42,7 @@ export const router = createBrowserRouter(createRoutesFromElements(
       </Route>
     </Route>
 
-    <Route path="vans" >
+    <Route path="vans" errorElement={<ErrorComponet/>}>
       <Route
         index
         loader={vansLoader}
