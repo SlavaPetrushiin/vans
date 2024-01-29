@@ -9,19 +9,20 @@ import Home from "./pages/Home/Home";
 import Dashboard from "./pages/Host/Dashboard/Dashboard";
 import HostLayot from "./pages/Host/HostLayot";
 import Details from "./pages/Host/HostVans/HostVanDetail/Details";
-import HostVanDetailLayout, {loader as hostVanDetailLoader} from "./pages/Host/HostVans/HostVanDetail/HostVanDetailLayout";
+import HostVanDetailLayout, { loader as hostVanDetailLoader } from "./pages/Host/HostVans/HostVanDetail/HostVanDetailLayout";
 import Photos from "./pages/Host/HostVans/HostVanDetail/Photos";
 import Pricing from "./pages/Host/HostVans/HostVanDetail/Pricing";
-import HostVans, { loader as hostVansLoader }  from "./pages/Host/HostVans/HostVans";
+import HostVans, { loader as hostVansLoader } from "./pages/Host/HostVans/HostVans";
 import Income from "./pages/Host/Income/Income";
 import Reviews from "./pages/Host/Reviews/Reviews";
 import Layout from "./pages/Layout";
 import VanDetail, { loader as vanDetailLoader } from "./pages/Vans/VanDetail";
 import Vans, { loader as vansLoader } from "./pages/Vans/Vans";
 import ErrorComponet from "./components/ErrorComponet";
+import Login from "./pages/Login/Login";
 
 export const router = createBrowserRouter(createRoutesFromElements(
-  <Route path="/" element={<Layout />} errorElement={<ErrorComponet/>}>
+  <Route path="/" element={<Layout />} errorElement={<ErrorComponet />}>
     <Route index element={<Home />} />
     <Route path="about" element={<About />} />
 
@@ -54,6 +55,11 @@ export const router = createBrowserRouter(createRoutesFromElements(
         element={<VanDetail />}
       />
     </Route>
+
+    <Route
+      path="login"
+      element={<Login />}
+    />
 
     <Route path="*" element={<NoMatch />} />
   </Route>
