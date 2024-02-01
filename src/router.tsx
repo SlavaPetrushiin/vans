@@ -19,8 +19,9 @@ import Layout from "./pages/Layout";
 import VanDetail, { loader as vanDetailLoader } from "./pages/Vans/VanDetail";
 import Vans, { loader as vansLoader } from "./pages/Vans/Vans";
 import ErrorComponet from "./components/ErrorComponet";
-import Login from "./pages/Login/Login";
+import Login, {loader as loaderLogin} from "./pages/Login/Login";
 import { requireAuth } from "./utils";
+
 
 export const router = createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<Layout />} errorElement={<ErrorComponet />}>
@@ -102,6 +103,7 @@ export const router = createBrowserRouter(createRoutesFromElements(
     <Route
       path="login"
       element={<Login />}
+      loader={loaderLogin}
     />
 
     <Route path="*" element={<NoMatch />} />

@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { Outlet, Params, useLoaderData, useParams } from 'react-router-dom';
 import CustomLink from '../../../../components/CustomLink/CustomLink';
 import { Van_Result, getVan } from '../../../../api/api';
+import { requireAuth } from '../../../../utils';
 
 
 export type ContextVan = Van_Result;
 
 export async function loader({params}: {params: Params<"vanId">}){
-    return  getVan(params.vanId!)
+    await requireAuth();
+    return  getVan(params.vanId!);
 } 
 
 const HostVanDetailLayout = () => {
